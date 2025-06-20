@@ -10,9 +10,10 @@ pipeline {
         githubPush()
     }
 
-    tools {
-        gradle "gradle"
-    }
+   tools {
+    nodejs "nodejs"  
+    gradle "gradle"
+}
 
     stages {
         stage('Clone code') {
