@@ -1,16 +1,19 @@
 pipeline {
     agent any
+
     environment {
-        
         RENDER_DEPLOY_SCRIPT = 'node server.js'
     }
 
-    // triggers {
-    //     githubPush()
-    // }
-    tools{
+    
+    triggers {
+        githubPush()
+    }
+
+    tools {
         gradle "gradle"
     }
+
     stages {
         stage('Clone code') {
             steps {
@@ -18,7 +21,6 @@ pipeline {
             }
         }
 
-    stages {
         stage('Install dependencies') {
             steps {
                 sh 'npm install'
@@ -31,5 +33,13 @@ pipeline {
             }
         }
     }
-}
+
+    post {
+        success {
+            echo 'Deployment to Render was successful!'
+        }
+        failure {
+            echo 'Build or deployment failed. Please check the logs.'
+        }
+    }
 }
