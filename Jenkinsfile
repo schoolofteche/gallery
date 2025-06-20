@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage('Clone code') {
             steps {
-                git branch: 'kegode', url: 'https://github.com/schoolofteche/gallery.git'
+                git branch: 'master', url: 'https://github.com/schoolofteche/gallery.git'
             }
         }
 
