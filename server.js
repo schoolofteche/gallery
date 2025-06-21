@@ -18,9 +18,15 @@ let image = require('./routes/image');
 // });
 
 const config = require('./_config');
-
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'production';
 const mongoURI = config.mongoURI[env];
+
+
+
+// const config = require('./_config');
+
+// const env = process.env.NODE_ENV || 'development';
+// const mongoURI = config.mongoURI[env];
 
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,

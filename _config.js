@@ -9,9 +9,14 @@
 // module.exports = config;
 
 
-const config = {};
+const config = {}
 
-config.mongoURI = process.env.MONGO_URL; 
+config.mongoURI = {
+  production: process.env.MONGO_URL,
+  development: process.env.MONGO_URL,
+  test: process.env.MONGO_URL
+}
 
 module.exports = config;
+
 
