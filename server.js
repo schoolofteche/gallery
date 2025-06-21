@@ -8,12 +8,30 @@ let index = require('./routes/index');
 let image = require('./routes/image');
 
 // connecting the database
-let mongodb_url = 'mongodb+srv://schooloftecheinfo:r0nrrlUxZVTjZg8V@cluster.mongodb.net/darkroom?retryWrites=true&w=majority';
+// let mongodb_url = 'mongodb+srv://schooloftecheinfo:r0nrrlUxZVTjZg8V@cluster.mongodb.net/darkroom?retryWrites=true&w=majority';
+// let mongodb_url = 'mongodb+srv://schooloftecheinfo:r0nrrlUxZVTjZg8V@myip.0xndgzz.mongodb.net/?retryWrites=true&w=majority&appName=MyIP';
+// let mongodb_url = 'mongodb+srv://schooloftecheinfo:r0nrrlUxZVTjZg8V@myip.0xndgzz.mongodb.net/darkroom?retryWrites=true&w=majority&appName=MyIP';
 
-let dbName = 'darkroom';
-mongoose.connect(`${mongodb_url}${dbName}`,{ useNewUrlParser: true , useUnifiedTopology: true }, (err)=>{
-    if (err) console.log(err)
+// let dbName = 'darkroom';
+// mongoose.connect(`${mongodb_url}${dbName}`,{ useNewUrlParser: true , useUnifiedTopology: true }, (err)=>{
+//     if (err) console.log(err)
+// });
+
+const config = require('./_config');
+
+const env = process.env.NODE_ENV || 'development';
+const mongoURI = config.mongoURI[env];
+
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(() => {
+  console.log(`✅ Connected to MongoDB (${env} environment)`);
+}).catch((err) => {
+  console.error('❌ MongoDB connection error:', err);
 });
+
+
 
 // test if the database has connected successfully
 let db = mongoose.connection;
