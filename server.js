@@ -9,8 +9,8 @@ let index = require('./routes/index');
 let image = require('./routes/image');
 
 // Initializing the app
-const app = express();
-
+// const app = express();
+const app = require('./app');
 // connecting the database
 // let mongodb_url = 'mongodb+srv://schooloftecheinfo:r0nrrlUxZVTjZg8V@cluster.mongodb.net/darkroom?retryWrites=true&w=majority';
 // let mongodb_url = 'mongodb+srv://schooloftecheinfo:r0nrrlUxZVTjZg8V@myip.0xndgzz.mongodb.net/?retryWrites=true&w=majority&appName=MyIP';
@@ -101,9 +101,12 @@ const PORT = process.env.PORT || 5000;
 //     console.log(`Server is listening at http://0.0.0.0:${PORT}`);
 // });
 
-const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server is listening at http://0.0.0.0:${PORT}`);
-});
+let server = null;
+if (process.env.NODE_ENV !== 'test') {
+  server = app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
 
 module.exports = { app, server };
 

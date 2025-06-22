@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'test';
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const { app, server } = require('../server'); // 👈 import both
+const { app, server } = require('../server'); 
 const should = chai.should();
 
 chai.use(chaiHttp);
@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 describe('Photos', function () {
   it('should list ALL photos on / GET', function (done) {
     this.timeout(60000);
-    chai.request(app) // 👈 use app, not server
+    chai.request(app)
       .get('/')
       .end(function (err, res) {
         res.should.have.status(200);
@@ -21,6 +21,7 @@ describe('Photos', function () {
   });
 
   after(() => {
-    if (server) server.close(); // 👈 clean exit if server exists
+    if (server) server.close(); 
   });
 });
+
