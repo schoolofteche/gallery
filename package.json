@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "mocha test/serverTest.js",
-    "build": "webpack"
+    "test": "mocha test/serverTest.js"
+    
   },
   "keywords": [],
   "author": "",

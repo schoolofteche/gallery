@@ -38,11 +38,7 @@ pipeline {
             }
         }
 
-         stage('Build') {
-        steps {
-            sh 'npm run build'
-        }
-        }
+    
 
         stage('Deploy to Render') {
             steps {
