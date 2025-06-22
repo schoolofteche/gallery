@@ -4,9 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "test": "mocha test/serverTest.js"
-  },
+  "start": "node server.js",
+  "test": "mocha test/serverTest.js",
+  "build": "webpack"
+}
+,
   "keywords": [],
   "author": "",
   "license": "ISC",

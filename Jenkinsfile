@@ -32,12 +32,17 @@ pipeline {
             }
         }
 
-     stage('Run Tests') {
-    steps {
-        sh 'npx mocha test/serverTest.js --exit'
-    }
-}
+        stage('Run Tests') {
+            steps {
+                sh 'npx mocha test/serverTest.js --exit'
+            }
+        }
 
+         stage('Build') {
+        steps {
+            sh 'npm run build'
+        }
+        }
 
         stage('Deploy to Render') {
             steps {
