@@ -32,18 +32,38 @@ const mongoURI = config.mongoURI[env];
 // const env = process.env.NODE_ENV || 'development';
 // const mongoURI = config.mongoURI[env];
 
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+// mongoose.connect(mongoURI, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// }).then(() => {
+//   console.log(`✅ Connected to MongoDB (${env} environment)`);
+// }).catch((err) => {
+//   console.error('❌ MongoDB connection error:', err);
+
+
+// });
+
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 }).then(() => {
-  console.log(`✅ Connected to MongoDB (${env} environment)`);
+    console.log('Connected to MongoDB (test environment)');
 }).catch((err) => {
-  console.error('❌ MongoDB connection error:', err);
-
-
+    console.error('MongoDB connection error:', err);
 });
 
+app.get('/', (req, res) => {
+    res.status(200).send({ message: 'All photos here' });
+});
 
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(5000, () => {
+        console.log('Server is listening at http://0.0.0.0:5000');
+    });
+}
+
+// Export the app for testing
+module.exports = app;
 
 // test if the database has connected successfully
 // let db = mongoose.connection;
