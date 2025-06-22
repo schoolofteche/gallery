@@ -24,8 +24,9 @@ app.use('/image', image);
 
 // Default route (for test)
 app.get('/', (req, res) => {
-  res.status(200).send({ message: 'All photos here' });
+  res.status(200).json({ message: 'All photos here' });
 });
+
 
 // Mongo URI resolution
 const env = process.env.NODE_ENV || 'development';
