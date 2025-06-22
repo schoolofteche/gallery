@@ -47,7 +47,7 @@ pipeline {
 
         failure {
             echo 'Build or tests failed. Sending email...'
-            mail to: 'schooloftecheinfo@gmail.com',
+            mail to: 'felixkegode@gmail.com',
                  subject: "BUILD FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                  body: """\
 Hello,
