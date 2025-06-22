@@ -8,14 +8,26 @@ let Image = require('../models/images');
 
 
 
-router.get('/', (req,res)=>{
+// router.get('/', (req,res)=>{
     
-    Image.find({}, function(err, images){
-        // console.log(images)
-        if (err) console.log(err);
-        res.render('index',{images:images, msg: req.query.msg })
-    })
-})
+//     Image.find({}, function(err, images){
+//         // console.log(images)
+//         if (err) console.log(err);
+//         res.render('index',{images:images, msg: req.query.msg })
+//     })
+// })
+
+router.get('/', (req, res) => {
+  Image.find({}, function(err, images) {
+    if (err) return res.status(500).json({ error: err });
+
+    if (process.env.NODE_ENV === 'test') {
+      return res.status(200).json({ images });
+    }
+
+    res.render('index', { images, msg: req.query.msg });
+  });
+});
 
 router.post('/upload', (req, res)=>{
     upload(req,res, (err)=>{
