@@ -4,7 +4,7 @@ pipeline {
     environment {
         
         // MONGO_URL = 'mongodb+srv://schooloftecheinfo:r0nrrlUxZVTjZg8V@myip.0xndgzz.mongodb.net/?retryWrites=true&w=majority&appName=MyIP'
-        MONGO_URL = 'mongodb+srv://schooloftecheinfo:r0nrrlUxZVTjZg8V@myip.0xndgzz.mongodb.net/darkroom?retryWrites=true&w=majority&appName=MyIP';
+        MONGO_URL = 'mongodb+srv://schooloftecheinfo:r0nrrlUxZVTjZg8V@myip.0xndgzz.mongodb.net/?retryWrites=true&w=majority&appName=MyIP';
 
         RENDER_DEPLOY_SCRIPT = 'node server.js'
     }
