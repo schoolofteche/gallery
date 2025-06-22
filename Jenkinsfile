@@ -31,11 +31,12 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                sh 'npm test'
-            }
-        }
+     stage('Run Tests') {
+    steps {
+        sh 'npx mocha test/serverTest.js --exit'
+    }
+}
+
 
         stage('Deploy to Render') {
             steps {
