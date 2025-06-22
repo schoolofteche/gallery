@@ -13,6 +13,7 @@ describe('Photos', function () {
     chai.request(app)
       .get('/')
       .end(function (err, res) {
+        if (err) return done(err);
         res.should.have.status(200);
         res.should.be.json;
         res.body.should.be.a('object');
@@ -20,8 +21,17 @@ describe('Photos', function () {
       });
   });
 
-  after(() => {
-    if (server) server.close();
+  // Close server and DB connections after tests to prevent hanging
+  after(function (done) {
+    if (server) {
+      server.close(() => {
+        // Close mongoose connection too
+        const mongoose = require('mongoose');
+        mongoose.connection.close(done);
+      });
+    } else {
+      done();
+    }
   });
 });
 

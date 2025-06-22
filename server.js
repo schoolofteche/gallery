@@ -22,11 +22,10 @@ app.use(bodyParser.json());
 app.use('/', index);
 app.use('/image', image);
 
-// Default route (for test)
+// Default route (for test or fallback)
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'All photos here' });
 });
-
 
 // Mongo URI resolution
 const env = process.env.NODE_ENV || 'development';
@@ -49,11 +48,11 @@ mongoose
 const PORT = process.env.PORT || 5000;
 let server = null;
 
+// Start server only if NOT testing
 if (env !== 'test') {
   server = app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Server is running at http://0.0.0.0:${PORT}`);
   });
 }
 
-// Export app and server for testing
 module.exports = { app, server };
