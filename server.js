@@ -21,7 +21,7 @@ const app = express();
 //     if (err) console.log(err)
 // });
 
-const config = require('./_config');
+
 const env = process.env.NODE_ENV || 'production';
 const mongoURI = config.mongoURI[env];
 
