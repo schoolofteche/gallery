@@ -4,11 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-  "start": "node server.js",
-  "test": "mocha test/serverTest.js",
-  "build": "webpack"
-}
-,
+    "start": "node server.js",
+    "test": "mocha test/serverTest.js",
+    "build": "webpack"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -24,6 +23,8 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^1.0.0",
-    "mocha": "^8.4.0"
+    "mocha": "^8.4.0",
+    "webpack": "^5.99.9",
+    "webpack-cli": "^6.0.1"
   }
 }
