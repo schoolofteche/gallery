@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'test';
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const { app, server } = require('../server'); 
+const { app, server } = require('../server');
 const should = chai.should();
 
 chai.use(chaiHttp);
@@ -21,7 +21,7 @@ describe('Photos', function () {
   });
 
   after(() => {
-    if (server) server.close(); 
+    if (server) server.close();
   });
 });
 
